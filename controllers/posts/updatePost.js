@@ -1,4 +1,4 @@
-const Post = require('../models/Posts.js');
+const Post = require('../../models/Posts.js');
 
 const updatePost = async ({ params, body }, res) => {
   const { title, content, image, category, date } = body;
