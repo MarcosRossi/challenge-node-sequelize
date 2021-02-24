@@ -17,7 +17,7 @@ Category.init(
   },
   {
     sequelize,
-    // modelName: 'Category',
+    modelName: 'Category',
     paranoid: true,
   }
 );

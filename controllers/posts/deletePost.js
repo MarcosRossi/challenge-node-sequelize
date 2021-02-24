@@ -2,7 +2,6 @@ const Post = require('../../models/Posts.js');
 
 const deletePost = async ({ params }, res) => {
   const { id } = params;
-
   if (!id) {
     res.status(400).json('Bad request, the id parameter is required.');
   }
