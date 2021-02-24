@@ -1,7 +1,7 @@
 const Post = require('../../models/Posts.js');
 
 const updatePost = async ({ params, body }, res) => {
-  const { title, content, image, category, date } = body;
+  const { title, content, image, categoryId, date } = body;
   const { id } = params;
 
   if (!id) {
@@ -14,7 +14,7 @@ const updatePost = async ({ params, body }, res) => {
       res.status(404).json(`Not found post with id: ${id} for update`);
     } else {
       const updated = await Post.update(
-        { title, content, image, category, date },
+        { title, content, image, CategoryId: categoryId, date },
         {
           where: { id },
         }

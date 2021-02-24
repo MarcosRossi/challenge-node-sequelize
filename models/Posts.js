@@ -1,6 +1,7 @@
 const { DataTypes, Model } = require('sequelize');
 const { sequelize } = require('../configuration');
 const moment = require('moment');
+const Category = require('./Category.js');
 
 class Post extends Model {}
 
@@ -37,15 +38,6 @@ Post.init(
         },
       },
     },
-    category: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Please enter a category',
-        },
-      },
-    },
     date: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -65,5 +57,9 @@ Post.init(
     paranoid: true,
   }
 );
+
+// Relationships
+Category.hasMany(Post, {foreignKey:'categoryId'});
+Post.belongsTo(Category, {foreignKey:'categoryId'});
 
 module.exports = Post;
